@@ -1,5 +1,6 @@
 ---
 kind: pipeline
+type: docker
 name: amd64
 
 platform:
@@ -63,6 +64,7 @@ volumes:
 
 ---
 kind: pipeline
+type: docker
 name: arm64
 
 platform:
@@ -125,6 +127,7 @@ volumes:
 
 ---
 kind: pipeline
+type: docker
 name: arm
 
 platform:
@@ -187,6 +190,7 @@ volumes:
 
 ---
 kind: pipeline
+type: docker
 name: manifest
 
 platform:
