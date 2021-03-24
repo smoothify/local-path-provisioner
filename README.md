@@ -1,5 +1,5 @@
 # Local Path Provisioner
-[![Build Status](https://drone-publish.rancher.io/api/badges/rancher/local-path-provisioner/status.svg)](https://drone-publish.rancher.io/rancher/local-path-provisioner)[![Go Report Card](https://goreportcard.com/badge/github.com/rancher/local-path-provisioner)](https://goreportcard.com/report/github.com/rancher/local-path-provisioner)
+[![Build Status](https://cloud.drone.io/api/badges/smoothify/local-path-provisioner/status.svg)](https://cloud.drone.io/smoothify/local-path-provisioner)[![Go Report Card](https://goreportcard.com/badge/github.com/rancher/local-path-provisioner)](https://goreportcard.com/report/github.com/rancher/local-path-provisioner)
 
 ## Overview
 
@@ -25,12 +25,12 @@ Kubernetes v1.12+.
 In this setup, the directory `/opt/local-path-provisioner` will be used across all the nodes as the path for provisioning (a.k.a, store the persistent volume data). The provisioner will be installed in `local-path-storage` namespace by default.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl apply -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/deploy/local-path-storage.yaml
 ```
 
 Or, use `kustomize` to deploy.
 ```
-kustomize build "github.com/rancher/local-path-provisioner/deploy?ref=master" | kubectl apply -f -
+kustomize build "github.com/smoothify/local-path-provisioner/deploy?ref=master" | kubectl apply -f -
 ```
 
 After installation, you should see something like the following:
@@ -49,13 +49,13 @@ $ kubectl -n local-path-storage logs -f -l app=local-path-provisioner
 
 Create a `hostPath` backend Persistent Volume and a pod uses it:
 ```
-kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pvc/pvc.yaml
-kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod/pod.yaml
+kubectl create -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/examples/pvc/pvc.yaml
+kubectl create -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/examples/pod/pod.yaml
 ```
 
 Or, use `kustomize` to deploy them.
 ```
-kustomize build "github.com/rancher/local-path-provisioner/examples/pod?ref=master" | kubectl apply -f -
+kustomize build "github.com/smoothify/local-path-provisioner/examples/pod?ref=master" | kubectl apply -f -
 ```
 
 You should see the PV has been created:
@@ -86,12 +86,12 @@ kubectl exec volume-test -- sh -c "echo local-path-test > /data/test"
 
 Now delete the pod using
 ```
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/examples/pod/pod.yaml
 ```
 
 After confirm that the pod is gone, recreated the pod using
 ```
-kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod/pod.yaml
+kubectl create -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/examples/pod/pod.yaml
 ```
 
 Check the volume content:
@@ -102,13 +102,13 @@ local-path-test
 
 Delete the pod and pvc
 ```
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod/pod.yaml
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pvc/pvc.yaml
+kubectl delete -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/examples/pod/pod.yaml
+kubectl delete -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/examples/pvc/pvc.yaml
 ```
 
 Or, use `kustomize` to delete them.
 ```
-kustomize build "github.com/rancher/local-path-provisioner/examples/pod?ref=master" | kubectl delete -f -
+kustomize build "github.com/smoothify/local-path-provisioner/examples/pod?ref=master" | kubectl delete -f -
 ```
 
 The volume content stored on the node will be automatically cleaned up. You can check the log of `local-path-provisioner-xxx` for details.
@@ -243,14 +243,14 @@ Before uninstallation, make sure the PVs created by the provisioner have already
 To uninstall, execute:
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+kubectl delete -f https://raw.githubusercontent.com/smoothify/local-path-provisioner/master/deploy/local-path-storage.yaml
 ```
 
 ## Debug
 > it providers a out-of-cluster debug env for deverlopers
 ### debug
 ```Bash
-git clone https://github.com/rancher/local-path-provisioner.git
+git clone https://github.com/smoothify/local-path-provisioner.git
 cd local-path-provisioner
 go build
 kubectl apply -f debug/config.yaml

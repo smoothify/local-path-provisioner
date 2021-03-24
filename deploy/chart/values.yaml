@@ -3,7 +3,7 @@
 replicaCount: 1
 
 image:
-  repository: rancher/local-path-provisioner
+  repository: smoothify/local-path-provisioner
   tag: v0.0.19
   pullPolicy: IfNotPresent
 

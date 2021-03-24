@@ -6,5 +6,5 @@ resources:
 commonLabels:
   app: local-path-provisioner
 images:
-- name: rancher/local-path-provisioner
+- name: smoothify/local-path-provisioner
   newTag: dev

@@ -2,10 +2,10 @@
 
 set -e
 
-base="${GOPATH}/src/github.com/rancher/local-path-provisioner"
+base="${GOPATH}/src/github.com/smoothify/local-path-provisioner"
 files=`find ${base}/deploy/ |grep yaml |sort`
 
-project="rancher\/local-path-provisioner"
+project="smoothify\/local-path-provisioner"
 latest=`cat ${base}/bin/latest_image`
 echo latest image ${latest}
 

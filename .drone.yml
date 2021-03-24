@@ -30,7 +30,7 @@ steps:
     - "dist/artifacts/*"
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -43,13 +43,13 @@ steps:
     dockerfile: package/Dockerfile
     password:
       from_secret: docker_password
-    repo: "rancher/local-path-provisioner"
+    repo: "smoothify/local-path-provisioner"
     tag: "${DRONE_TAG}-amd64"
     username:
       from_secret: docker_username
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -92,7 +92,7 @@ steps:
     - "dist/artifacts/*"
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -105,13 +105,13 @@ steps:
     dockerfile: package/Dockerfile
     password:
       from_secret: docker_password
-    repo: "rancher/local-path-provisioner"
+    repo: "smoothify/local-path-provisioner"
     tag: "${DRONE_TAG}-arm64"
     username:
       from_secret: docker_username
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -154,7 +154,7 @@ steps:
     - "dist/artifacts/*"
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -167,13 +167,13 @@ steps:
     dockerfile: package/Dockerfile
     password:
       from_secret: docker_password
-    repo: "rancher/local-path-provisioner"
+    repo: "smoothify/local-path-provisioner"
     tag: "${DRONE_TAG}-arm"
     username:
       from_secret: docker_username
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
@@ -205,11 +205,11 @@ steps:
       - linux/amd64
       - linux/arm64
       - linux/arm
-    target: "rancher/local-path-provisioner:${DRONE_TAG}"
-    template: "rancher/local-path-provisioner:${DRONE_TAG}-ARCH"
+    target: "smoothify/local-path-provisioner:${DRONE_TAG}"
+    template: "smoothify/local-path-provisioner:${DRONE_TAG}-ARCH"
   when:
     instance:
-    - drone-publish.rancher.io
+    - cloud.drone.io
     ref:
     - refs/head/master
     - refs/tags/*
